@@ -16,7 +16,7 @@ class SimpleUploadServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
-        $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk');
+        $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk_config');
     }
 
     /**

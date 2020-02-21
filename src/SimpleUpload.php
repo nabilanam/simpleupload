@@ -11,7 +11,7 @@ class SimpleUpload
     private $file = null;
     private $dirName = null;
     private $fileName = null;
-    private $diskName = config('simpleupload.default_disk');
+    private $diskName = null;
     private $previousPath = null;
     private $width = null;
     private $height = null;
@@ -109,6 +109,10 @@ class SimpleUpload
     {
         $uploadDir = 'uploads/' . $this->dirName . '/' . date("Y") . '/' . date("m") . '/' . date("d");
 
+        if (!$this->diskName) {
+            $this->diskName = config('simpleupload.default_disk');
+        }
+
         if ($this->file) {
             $path = null;
 
@@ -117,7 +121,7 @@ class SimpleUpload
             }
 
             if ($this->fileName) {
-                $path = $this->file->storeAs($uploadDir, $this->fileName . $this->file->clientExtension(), $this->diskName);
+                $path = $this->file->storeAs($uploadDir, $this->fileName . '.' . $this->file->clientExtension(), $this->diskName);
             } else {
                 $path = $this->file->store($uploadDir, $this->diskName) ?? $this->previousPath;
             }
