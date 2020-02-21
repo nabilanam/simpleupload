@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/nabilanam/simpleupload/license)](https://packagist.org/packages/nabilanam/simpleupload)
 [![composer.lock available](https://poser.pugx.org/nabilanam/simpleupload/composerlock)](https://packagist.org/packages/nabilanam/simpleupload)
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+A dead simple file uploader.
 
 ## Installation
 
@@ -18,15 +18,26 @@ $ composer require nabilanam/simpleupload
 
 ## Usage
 
+``` php
+// somewhere in your controller
+
+use nabilanam\SimpleUpload\SimpleUpload;
+
+public function update(Request $request, Slider $slider, SimpleUpload $upload)
+{
+    $upload->file($request->image)
+        ->dirName('sliders')
+        ->resizeImage(600, 100)
+        ->deleteIfExists($slider->image)
+        ->save();
+
+    return back();
+}
+```
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
 
 ## Contributing
 
