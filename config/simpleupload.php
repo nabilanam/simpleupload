@@ -2,7 +2,7 @@
 
 return [
     'default_directory' => 'uploads/default/',
-    'provieders' => [
+    'providers' => [
         nabilanam\SimpleUpload\SimpleUploadServiceProvider::class
     ],
 ];
