@@ -11,7 +11,7 @@ class SimpleUpload
     private $file = null;
     private $dirName = null;
     private $fileName = null;
-    private $diskName = 'public';
+    private $diskName = config('simpleupload.default_disk');
     private $previousPath = null;
     private $width = null;
     private $height = null;
@@ -56,7 +56,7 @@ class SimpleUpload
     }
 
     /**
-     * Default is public.
+     * Default is simpleupload disk. Publish config file to change default disk.
      * Dont add trailing '/' character.
      *
      * @param string $diskName
@@ -117,7 +117,7 @@ class SimpleUpload
             }
 
             if ($this->fileName) {
-                $path = $this->file->storeAs($uploadDir, $this->fileName, $this->diskName);
+                $path = $this->file->storeAs($uploadDir, $this->fileName . $this->file->clientExtension(), $this->diskName);
             } else {
                 $path = $this->file->store($uploadDir, $this->diskName) ?? $this->previousPath;
             }

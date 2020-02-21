@@ -13,15 +13,10 @@ class SimpleUploadServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'nabilanam');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'nabilanam');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+        $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk');
     }
 
     /**
@@ -31,10 +26,9 @@ class SimpleUploadServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/simpleupload.php', 'simpleupload');
+        $this->mergeConfigFrom(__DIR__ . '/../config/simpleupload.php', 'simpleupload');
 
-        // Register the service the package provides.
-        $this->app->singleton('simpleupload', function ($app) {
+        $this->app->bind('SimpleUpload', function ($app) {
             return new SimpleUpload;
         });
     }
@@ -48,7 +42,7 @@ class SimpleUploadServiceProvider extends ServiceProvider
     {
         return ['simpleupload'];
     }
-    
+
     /**
      * Console-specific booting.
      *
@@ -56,27 +50,8 @@ class SimpleUploadServiceProvider extends ServiceProvider
      */
     protected function bootForConsole()
     {
-        // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/simpleupload.php' => config_path('simpleupload.php'),
+            __DIR__ . '/../config/simpleupload.php' => config_path('simpleupload.php'),
         ], 'simpleupload.config');
-
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/nabilanam'),
-        ], 'simpleupload.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/nabilanam'),
-        ], 'simpleupload.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/nabilanam'),
-        ], 'simpleupload.views');*/
-
-        // Registering package commands.
-        // $this->commands([]);
     }
 }
