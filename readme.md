@@ -1,9 +1,10 @@
 # SimpleUpload
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+[![Latest Stable Version](https://poser.pugx.org/nabilanam/simpleupload/version)](https://packagist.org/packages/nabilanam/simpleupload)
+[![Total Downloads](https://poser.pugx.org/nabilanam/simpleupload/downloads)](https://packagist.org/packages/nabilanam/simpleupload)
+[![Latest Unstable Version](https://poser.pugx.org/nabilanam/simpleupload/v/unstable)](//packagist.org/packages/nabilanam/simpleupload)
+[![License](https://poser.pugx.org/nabilanam/simpleupload/license)](https://packagist.org/packages/nabilanam/simpleupload)
+[![composer.lock available](https://poser.pugx.org/nabilanam/simpleupload/composerlock)](https://packagist.org/packages/nabilanam/simpleupload)
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
