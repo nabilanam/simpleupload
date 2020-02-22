@@ -1,20 +1,23 @@
 <?php
 
 return [
-    /** Change this if you dont want to set diskName everytime */
-    'default_disk'      => 'simpleupload',
+    /** Default diskName */
+    'default_disk'          => 'simpleupload',
+
+    /** Root upload directory. Don't add trailing '/'. */
+    'root_directory'        => 'uploads',
 
     /**
-     * SimpleUpload will not delete a file
-     * when you call deleteIfExists and the path starts with default_directory
+     * SimpleUpload will not delete the file if you call deleteIfExists
+     * and the path starts with protected_directory
      */
-    'default_directory' => 'uploads/default/',
+    'protected_directory'   => 'defaults/',
 
-    /** SimpleUpload disk config */
-    'disk_config' => [
-        'driver' => 'local',
-        'root' => public_path(),
-        'url' => env('APP_URL') . '/uploads',
-        'visibility' => 'public',
+    /** simpleupload disk config */
+    'disk_config'           => [
+        'url'           => env('APP_URL'),
+        'root'          => public_path(),
+        'driver'        => 'local',
+        'visibility'    => 'public',
     ]
 ];

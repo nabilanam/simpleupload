@@ -107,16 +107,18 @@ class SimpleUpload
      */
     public function save()
     {
-        $uploadDir = 'uploads/' . $this->dirName . '/' . date("Y") . '/' . date("m") . '/' . date("d");
-
         if (!$this->diskName) {
             $this->diskName = config('simpleupload.default_disk');
         }
 
+        $uploadDir = config('simpleupload.root_directory') . '/' .
+            ($this->dirName ? $this->dirName . '/' : '') .
+            date("Y") . '/' . date("m") . '/' . date("d");
+
         if ($this->file) {
             $path = null;
 
-            if ($this->previousPath && Storage::disk($this->diskName)->exists($this->previousPath) && !Str::startsWith($this->previousPath, config('simpleupload.default_directory'))) {
+            if ($this->previousPath && Storage::disk($this->diskName)->exists($this->previousPath) && !Str::startsWith($this->previousPath, config('simpleupload.protected_directory'))) {
                 Storage::disk($this->diskName)->delete($this->previousPath);
             }
 

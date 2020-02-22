@@ -16,7 +16,6 @@ class SimpleUploadServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
-        $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk_config');
     }
 
     /**
@@ -28,8 +27,10 @@ class SimpleUploadServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/simpleupload.php', 'simpleupload');
 
-        $this->app->bind('SimpleUpload', function ($app) {
-            return new SimpleUpload;
+        $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk_config');
+
+        $this->app->bind('SimpleUpload', function () {
+            return new SimpleUpload();
         });
     }
 
