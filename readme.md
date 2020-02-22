@@ -6,16 +6,18 @@
 [![License](https://poser.pugx.org/nabilanam/simpleupload/license)](https://packagist.org/packages/nabilanam/simpleupload)
 [![composer.lock available](https://poser.pugx.org/nabilanam/simpleupload/composerlock)](https://packagist.org/packages/nabilanam/simpleupload)
 
-A dead simple file uploader.
+A dead simple and organized file uploader for laravel.
 
 ## Installation
 
-Via Composer
-
+Via Composer:
 ``` bash
 $ composer require nabilanam/simpleupload
 ```
-
+You can publish the config file:
+``` bash
+php artisan vendor:publish --provider="nabilanam\SimpleUpload\SimpleUploadServiceProvider"
+```
 ## Usage
 
 ``` php
