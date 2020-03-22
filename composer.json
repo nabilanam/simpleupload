@@ -4,7 +4,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "nabilanam",
+            "name": "Nabil Anam",
             "email": "nabil_code@outlook.com",
             "homepage": "https://github.com/nabilanam"
         }
@@ -12,7 +12,9 @@
     "homepage": "https://github.com/nabilanam/simpleupload",
     "keywords": [
         "Laravel",
-        "SimpleUpload"
+        "Simple",
+        "File",
+        "Upload"
     ],
     "require": {
         "illuminate/support": "~5|~6",
@@ -26,21 +28,21 @@
     },
     "autoload": {
         "psr-4": {
-            "nabilanam\\SimpleUpload\\": "src/"
+            "NabilAnam\\SimpleUpload\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "nabilanam\\SimpleUpload\\Tests\\": "tests"
+            "NabilAnam\\SimpleUpload\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "nabilanam\\SimpleUpload\\SimpleUploadServiceProvider"
+                "NabilAnam\\SimpleUpload\\SimpleUploadServiceProvider"
             ],
             "aliases": {
-                "SimpleUpload": "nabilanam\\SimpleUpload\\Facades\\SimpleUpload"
+                "SimpleUpload": "NabilAnam\\SimpleUpload\\Facades\\SimpleUpload"
             }
         }
     }

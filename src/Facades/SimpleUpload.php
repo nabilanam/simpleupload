@@ -1,6 +1,6 @@
 <?php
 
-namespace nabilanam\SimpleUpload\Facades;
+namespace NabilAnam\SimpleUpload\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

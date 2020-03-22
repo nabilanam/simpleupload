@@ -1,6 +1,6 @@
 <?php
 
-namespace nabilanam\SimpleUpload;
+namespace NabilAnam\SimpleUpload;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -26,12 +26,7 @@ class SimpleUploadServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/simpleupload.php', 'simpleupload');
-
         $this->app['config']['filesystems.disks.simpleupload'] = config('simpleupload.disk_config');
-
-        $this->app->bind('SimpleUpload', function () {
-            return new SimpleUpload();
-        });
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace nabilanam\SimpleUpload;
+namespace NabilAnam\SimpleUpload;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
