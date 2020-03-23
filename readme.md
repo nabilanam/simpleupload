@@ -16,18 +16,19 @@ $ composer require nabilanam/simpleupload
 ```
 You can publish the config file:
 ``` bash
-php artisan vendor:publish --provider="nabilanam\SimpleUpload\SimpleUploadServiceProvider"
+php artisan vendor:publish --provider="NabilAnam\SimpleUpload\SimpleUploadServiceProvider"
 ```
 ## Usage
 
 ``` php
 // somewhere in your controller
 
-use nabilanam\SimpleUpload\SimpleUpload;
+use NabilAnam\SimpleUpload\SimpleUpload;
 
-public function update(Request $request, Slider $slider, SimpleUpload $upload)
+public function update(Request $request, Slider $slider,)
 {
-    $upload->file($request->image)
+    (new SimpleUpload)
+        ->file($request->image)
         ->dirName('sliders')
         ->resizeImage(600, 100)
         ->deleteIfExists($slider->image)
