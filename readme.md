@@ -36,6 +36,10 @@ public function update(Request $request, Slider $slider)
 
     return back();
 }
+
+// somewhere in your blade file
+
+<img src="{{ asset($slider->image) }}" alt="slider">
 ```
 
 ## Change log
