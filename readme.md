@@ -25,7 +25,7 @@ php artisan vendor:publish --provider="NabilAnam\SimpleUpload\SimpleUploadServic
 
 use NabilAnam\SimpleUpload\SimpleUpload;
 
-public function update(Request $request, Slider $slider,)
+public function update(Request $request, Slider $slider)
 {
     (new SimpleUpload)
         ->file($request->image)
