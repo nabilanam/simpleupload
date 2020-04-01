@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/nabilanam/simpleupload/license)](https://packagist.org/packages/nabilanam/simpleupload)
 [![composer.lock available](https://poser.pugx.org/nabilanam/simpleupload/composerlock)](https://packagist.org/packages/nabilanam/simpleupload)
 
-A dead simple and organized file uploader for laravel.
+Dead simple Laravel file uploader.
 
 ## Installation
 
@@ -25,21 +25,23 @@ php artisan vendor:publish --provider="NabilAnam\SimpleUpload\SimpleUploadServic
 
 use NabilAnam\SimpleUpload\SimpleUpload;
 
-public function update(Request $request, Slider $slider)
+public function update(Request $request, YourModel $model)
 {
-    (new SimpleUpload)
+    $model->image = (new SimpleUpload)
         ->file($request->image)
-        ->dirName('sliders')
+        ->dirName('images')
         ->resizeImage(600, 100)
-        ->deleteIfExists($slider->image)
-        ->save();
+        ->deleteIfExists($model->image)
+        ->save(); // file path
+        
+    $model->save();
 
     return back();
 }
 
 // somewhere in your blade file
 
-<img src="{{ asset($slider->image) }}" alt="slider">
+<img src="{{ asset($model->image) }}" alt="image">
 ```
 
 ## Change log
@@ -48,7 +50,7 @@ Please see the [changelog](changelog.md) for more information on what has change
 
 ## Contributing
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+Pull requests are welcome!
 
 ## Security
 
