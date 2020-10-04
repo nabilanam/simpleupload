@@ -17,33 +17,19 @@
         "Upload"
     ],
     "require": {
-        "illuminate/support": "~5|~6",
+        "illuminate/support": "~5|~6|~7|~8",
         "intervention/image": "^2.5"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.1",
-        "orchestra/testbench": "~3|~4",
-        "sempro/phpunit-pretty-print": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "NabilAnam\\SimpleUpload\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "NabilAnam\\SimpleUpload\\Tests\\": "tests"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
                 "NabilAnam\\SimpleUpload\\SimpleUploadServiceProvider"
-            ],
-            "aliases": {
-                "SimpleUpload": "NabilAnam\\SimpleUpload\\Facades\\SimpleUpload"
-            }
+            ]
         }
     }
 }
