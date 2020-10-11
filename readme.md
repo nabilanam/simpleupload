@@ -29,9 +29,12 @@ public function update(Request $request, YourModel $model)
 {
     $model->image = (new SimpleUpload)
         ->file($request->image)
+        //->fileBase64($request->image)
         ->dirName('images')
         ->resizeImage(600, 100)
+        ->keepAspectRatio()
         ->deleteIfExists($model->image)
+        ->skipDirectory(false, false, true) // disable default Y/m/d directory structure
         ->save(); // file path
         
     $model->save();
