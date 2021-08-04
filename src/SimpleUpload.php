@@ -21,6 +21,7 @@ class SimpleUpload
 	private $skipYear = false;
 	private $skipMonth = false;
 	private $skipDay = false;
+	private $callback = null;
 
 	/**
 	 * Laravel form file
@@ -149,6 +150,56 @@ class SimpleUpload
 	}
 
 	/**
+	 * For final path skip year directory.
+	 *
+	 * @return SimpleUpload
+	 */
+	public function skipYear()
+	{
+		$this->skipYear = true;
+
+		return $this;
+	}
+
+	/**
+	 * For final path skip month directory.
+	 *
+	 * @return SimpleUpload
+	 */
+	public function skipMonth()
+	{
+		$this->skipMonth = true;
+
+		return $this;
+	}
+
+	/**
+	 * For final path skip day directory.
+	 *
+	 * @return SimpleUpload
+	 */
+	public function skipDay()
+	{
+		$this->skipDay = true;
+
+		return $this;
+	}
+
+	/**
+	 * Work with underlying intervention image object.
+	 * Callback receives intervention image object and it must return the modified image object.
+	 *
+	 * @param function callback
+	 * @return SimpleUpload
+	 */
+	public function intervention($callback)
+	{
+		$this->callback = $callback;
+
+		return $this;
+	}
+
+	/**
 	 * Saves file and returns path.
 	 * Terminal operation for file upload.
 	 *
@@ -180,13 +231,27 @@ class SimpleUpload
 				}
 			}
 
+			$img = null;
 			if ($this->width || $this->height) {
 				$img = Image::make($path);
 				if ($this->keepAspectRatio) {
-					$img->fit($this->width == null ? $this->height : $this->width, $this->height)->save($path);
+					$img = $img->fit($this->width == null ? $this->height : $this->width, $this->height);
 				} else {
-					$img->resize($this->width, $this->height)->save($path);
+					$img = $img->resize($this->width, $this->height);
 				}
+			}
+
+			if ($this->callback) {
+				if ($img == null) {
+					$img = Image::make($path);
+				}
+
+				$cb = $this->callback;
+				$img = $cb($img);
+			}
+
+			if ($img) {
+				$img->save($path);
 			}
 
 			return $path;
